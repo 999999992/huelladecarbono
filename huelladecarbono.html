@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calculadora Huella de Carbono</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="huelladecarbono.css" />
+</head>
+<body class="transition-colors duration-300">
+
+  <header class="p-4 bg-green-600 text-white flex justify-between items-center">
+    <h1 class="text-2xl font-bold">Calculadora Huella de Carbono</h1>
+    <button id="toggle-theme" class="bg-green-800 px-4 py-2 rounded hover:bg-green-700 transition">Modo Oscuro</button>
+  </header>
+
+  <main class="max-w-3xl mx-auto p-6 space-y-8">
+
+    <!-- Sección 1: Alimentación -->
+    <section id="section1" class="section space-y-4">
+      <h2 class="text-xl font-semibold mb-4">Sección 1: Alimentación</h2>
+
+      <div>
+        <label for="carne" class="block font-semibold mb-1">Pregunta 1: ¿cuanta Carne consumis? (%)</label>
+        <input type="number" name="carne" id="carne" min="0" max="100" required class="w-full p-2 border rounded" />
+      </div>
+
+      <div>
+        <label for="lacteos" class="block font-semibold mb-1">Pregunta 2: ¿cuantos Lácteos consumis? (%)</label>
+        <input type="number" name="lacteos" id="lacteos" min="0" max="100" required class="w-full p-2 border rounded" />
+      </div>
+
+      <div>
+        <label for="vegetales" class="block font-semibold mb-1">Pregunta 3: ¿cuantos Vegetales consumis? (%)</label>
+        <input type="number" name="vegetales" id="vegetales" min="0" max="100" required class="w-full p-2 border rounded" />
+      </div>
+
+      <div class="flex justify-end mt-4">
+        <button type="button" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600" data-next="section2">
+          Siguiente
+        </button>
+      </div>
+    </section>
+
+    <!-- Sección 2: Residuos -->
+    <section id="section2" class="section space-y-4 hidden">
+      <h2 class="text-xl font-semibold mb-4">Sección 2: Gestión de Residuos</h2>
+
+      <div>
+        <label for="reciclaje" class="block font-semibold mb-1">Pregunta 4: ¿cual es tu porcentaje de Reciclaje? (%)</label>
+        <input type="number" name="reciclaje" id="reciclaje" min="0" max="100" required class="w-full p-2 border rounded" />
+      </div>
+
+      <div>
+        <label for="compostaje" class="block font-semibold mb-1">Pregunta 5: ¿cual es tu porcentaje de Compostaje? (%)</label>
+        <input type="number" name="compostaje" id="compostaje" min="0" max="100" required class="w-full p-2 border rounded" />
+      </div>
+
+      <div>
+        <label for="vertedero" class="block font-semibold mb-1">Pregunta 6: ¿cual es tu porcentaje de Vertedero? (%)</label>
+        <input type="number" name="vertedero" id="vertedero" min="0" max="100" required class="w-full p-2 border rounded" />
+      </div>
+
+      <div class="flex justify-between mt-4">
+        <button type="button" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500" data-prev="section1">Anterior</button>
+        <button type="button" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600" data-next="section3">Siguiente</button>
+      </div>
+    </section>
+
+    <!-- Sección 3: Transporte -->
+    <section id="section3" class="section space-y-4 hidden">
+      <h2 class="text-xl font-semibold mb-4">Sección 3: Transporte</h2>
+
+      <div>
+        <label for="vuelosHoras" class="block font-semibold mb-1">Pregunta 7: ¿cuantas Horas voladas al año?</label>
+        <input type="number" name="vuelosHoras" id="vuelosHoras" min="0" required class="w-full p-2 border rounded" />
+      </div>
+
+      <div>
+        <label for="autoKm" class="block font-semibold mb-1">Pregunta 8: ¿cuantos Kilometros recorridos en auto al año?</label>
+        <input type="number" name="autoKm" id="autoKm" min="0" required class="w-full p-2 border rounded" />
+      </div>
+
+      <div class="flex justify-between mt-4">
+        <button type="button" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500" data-prev="section2">Anterior</button>
+        <button type="button" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600" data-next="section4">Siguiente</button>
+      </div>
+    </section>
+
+    <!-- Sección 4: Energía Renovable -->
+    <section id="section4" class="section space-y-4 hidden">
+      <h2 class="text-xl font-semibold mb-4">Sección 4: Energía Renovable</h2>
+
+      <div>
+        <label for="renovablesPorcentaje" class="block font-semibold mb-1">Pregunta 9: ¿cual es tu % de Energía renovable?</label>
+        <input type="range" id="renovablesPorcentaje" min="0" max="100" value="0" step="1" />
+        <p class="mt-2">Valor seleccionado: <span id="renovablesValor">0%</span></p>
+      </div>
+
+      <div class="flex justify-between mt-4">
+        <button type="button" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500" data-prev="section3">Anterior</button>
+        <button type="button" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600" data-next="section5">Siguiente</button>
+      </div>
+    </section>
+
+    <!-- Sección 5: Preguntas adicionales -->
+    <section id="section5" class="section space-y-4 hidden">
+      <h2 class="text-xl font-semibold mb-4">Sección 5: Preguntas adicionales</h2>
+
+    <!-- Pregunta 10: numérica -->
+      <div>
+        <label for="pregunta10" class="block font-semibold mb-1">Pregunta 10: ¿Cuántos kWh de electricidad consumís por mes? (0-100)</label>
+        <input type="number" id="pregunta10" min="0" max="100" class="w-full p-2 border rounded">
+      </div>
+
+    <!-- Preguntas 11 a 13: sí/no -->
+      <div>
+        <p class="font-semibold mb-1">Pregunta 11: ¿Usás bombillas LED en tu hogar?</p>
+       <div class="flex gap-4">
+        <button type="button" class="respuesta-btn" data-id="pregunta11" data-value="100">Sí</button>
+        <button type="button" class="respuesta-btn" data-id="pregunta11" data-value="0">No</button>
+       </div>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-1">Pregunta 12: ¿Apagás los electrodomésticos cuando no los usás?</p>
+       <div class="flex gap-4">
+        <button type="button" class="respuesta-btn" data-id="pregunta12" data-value="100">Sí</button>
+        <button type="button" class="respuesta-btn" data-id="pregunta12" data-value="0">No</button>
+       </div>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-1">Pregunta 13: ¿Tu vivienda está bien aislada térmicamente?</p>
+       <div class="flex gap-4">
+        <button type="button" class="respuesta-btn" data-id="pregunta13" data-value="100">Sí</button>
+        <button type="button" class="respuesta-btn" data-id="pregunta13" data-value="0">No</button>
+       </div>
+      </div>
+
+    <!-- Pregunta 14: numérica -->
+      <div>
+        <label for="pregunta14" class="block font-semibold mb-1">Pregunta 14: ¿Cuántos minutos dura tu ducha promedio?</label>
+        <input type="number" id="pregunta14" min="0" class="w-full p-2 border rounded">
+      </div>
+
+    <!-- Preguntas 15 a 19 -->
+      <div>
+        <p class="font-semibold mb-1">Pregunta 15: ¿Usás agua caliente en todas tus duchas?</p>
+       <div class="flex gap-4">
+        <button type="button" class="respuesta-btn" data-id="pregunta15" data-value="100">Sí</button>
+        <button type="button" class="respuesta-btn" data-id="pregunta15" data-value="0">No</button>
+       </div>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-1">Pregunta 16: ¿Usás lavavajillas o lavadora con cargas completas?</p>
+       <div class="flex gap-4">
+        <button type="button" class="respuesta-btn" data-id="pregunta16" data-value="100">Sí</button>
+        <button type="button" class="respuesta-btn" data-id="pregunta16" data-value="0">No</button>
+       </div>
+      </div>
+
+      <div>
+        <label for="pregunta17" class="block font-semibold mb-1">Pregunta 17: ¿Con qué frecuencia comprás ropa nueva? (veces por mes)</label>
+        <input type="number" id="pregunta17" min="0" class="w-full p-2 border rounded">
+      </div>
+
+      <div>
+        <p class="font-semibold mb-1">Pregunta 18: ¿Comprás productos locales en lugar de importados?</p>
+        <div class="flex gap-4">
+         <button type="button" class="respuesta-btn" data-id="pregunta18" data-value="100">Sí</button>
+         <button type="button" class="respuesta-btn" data-id="pregunta18" data-value="0">No</button>
+        </div>
+       </div>
+
+      <div>
+        <p class="font-semibold mb-1">Pregunta 19: ¿Reutilizás o reciclás envases y bolsas?</p>
+        <div class="flex gap-4">
+         <button type="button" class="respuesta-btn" data-id="pregunta19" data-value="100">Sí</button>
+         <button type="button" class="respuesta-btn" data-id="pregunta19" data-value="0">No</button>
+        </div>
+      </div>
+
+    <!-- Pregunta 20: numérica -->
+      <div>
+        <label for="pregunta20" class="block font-semibold mb-1">Pregunta 20: ¿Cuántas veces por semana generás residuos orgánicos sin separar?</label>
+        <input type="number" id="pregunta20" min="0" class="w-full p-2 border rounded">
+      </div>
+
+    <!-- Preguntas 21 a 28 -->
+      <div>
+        <p class="font-semibold mb-1">Pregunta 21: ¿Separás correctamente los residuos reciclables?</p>
+       <div class="flex gap-4">
+        <button type="button" class="respuesta-btn" data-id="pregunta21" data-value="100">Sí</button>
+        <button type="button" class="respuesta-btn" data-id="pregunta21" data-value="0">No</button>
+       </div>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-1">Pregunta 22: ¿Usás bolsas reutilizables en tus compras?</p>
+       <div class="flex gap-4">
+        <button type="button" class="respuesta-btn" data-id="pregunta22" data-value="100">Sí</button>
+        <button type="button" class="respuesta-btn" data-id="pregunta22" data-value="0">No</button>
+       </div>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-1">Pregunta 23: ¿Tenés plantas o huerta en tu casa?</p>
+       <div class="flex gap-4">
+        <button type="button" class="respuesta-btn" data-id="pregunta23" data-value="100">Sí</button>
+        <button type="button" class="respuesta-btn" data-id="pregunta23" data-value="0">No</button>
+       </div>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-1">Pregunta 24: ¿Participás en actividades de limpieza o voluntariado ambiental?</p>
+       <div class="flex gap-4">
+        <button type="button" class="respuesta-btn" data-id="pregunta24" data-value="100">Sí</button>
+        <button type="button" class="respuesta-btn" data-id="pregunta24" data-value="0">No</button>
+       </div>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-1">Pregunta 25: ¿Compensás tu huella de carbono (plantando árboles, donando)?</p>
+       <div class="flex gap-4">
+        <button type="button" class="respuesta-btn" data-id="pregunta25" data-value="100">Sí</button>
+        <button type="button" class="respuesta-btn" data-id="pregunta25" data-value="0">No</button>
+       </div>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-1">Pregunta 26: ¿Usás bicicleta o caminás en lugar de usar auto?</p>
+       <div class="flex gap-4">
+        <button type="button" class="respuesta-btn" data-id="pregunta26" data-value="100">Sí</button>
+        <button type="button" class="respuesta-btn" data-id="pregunta26" data-value="0">No</button>
+       </div>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-1">Pregunta 27: ¿Usás transporte público en lugar de vehículo propio?</p>
+       <div class="flex gap-4">
+        <button type="button" class="respuesta-btn" data-id="pregunta27" data-value="100">Sí</button>
+        <button type="button" class="respuesta-btn" data-id="pregunta27" data-value="0">No</button>
+       </div>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-1">Pregunta 28: ¿Cocinás en casa en lugar de pedir comida para llevar?</p>
+       <div class="flex gap-4">
+        <button type="button" class="respuesta-btn" data-id="pregunta28" data-value="100">Sí</button>
+        <button type="button" class="respuesta-btn" data-id="pregunta28" data-value="0">No</button>
+       </div>
+      </div>
+
+    <!-- Pregunta 29: numérica -->
+      <div>
+       <label for="pregunta29" class="block font-semibold mb-1">Pregunta 29: ¿Cuántas veces viajás al exterior por año?</label>
+       <input type="number" id="pregunta29" min="0" class="w-full p-2 border rounded">
+      </div>
+
+    <!-- Pregunta 30: sí/no -->
+      <div>
+        <p class="font-semibold mb-1">Pregunta 30: ¿Te informás activamente sobre el cambio climático?</p>
+       <div class="flex gap-4">
+        <button type="button" class="respuesta-btn" data-id="pregunta30" data-value="100">Sí</button>
+        <button type="button" class="respuesta-btn" data-id="pregunta30" data-value="0">No</button>
+       </div>
+      </div>
+
+    <!-- Botones navegación -->
+      <form id="carbon-form">
+        <div class="flex justify-between mt-4">
+          <button type="button" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500" data-prev="section4">Anterior</button>
+          <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Calcular huella</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Mensajes -->
+    <div id="errores" class="hidden text-red-600 font-semibold mt-4"></div>
+    <div id="resultado" class="hidden mt-4 p-4 border rounded bg-green-100"></div>
+
+  </main>
+
+  <script src="huelladecarbono.js"></script>
+</body>
+</html>
