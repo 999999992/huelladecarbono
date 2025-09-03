@@ -1,6 +1,5 @@
 # Calculadora de Huella de Carbono
-![22222222](https://github.com/user-attachments/assets/62a61ee7-5d9b-48eb-be3b-3d6b02d63d3e)  ![llllll-modoscuro](https://github.com/user-attachments/assets/7c397e51-78e3-4b5e-a47d-20fecdbb4974)  
-
+![22222222](https://github.com/user-attachments/assets/62a61ee7-5d9b-48eb-be3b-3d6b02d63d3e) 
 
 # Introducción
 La huella de carbono es el total de las emisiones de los Gases de Efecto Invernadero (GEI) causados indirectamente por una persona, una organizacion, evento o un producto en especifico.
