@@ -23,10 +23,15 @@ cada seccion contiene preguntas interactivas, la mayoria son numericas o con bot
 # Javascript y sus funcionalidades clave son: 
 
 1- Modo oscuro alterna clases al documentElement y al slider (input[type="range"]) para aplicar un tema oscuro.
+
 2- Slider de energía renovable muestra dinámicamente el valor en pantalla a medida que el usuario lo mueve.
+
 3- Validación del Formulario verifica campos requeridos, rangos numéricos válidos y coherencia (por ejemplo: suma del 100% en dietas y residuos).
-4- Cálculo de Puntajes las secciones suman puntos positivos (mayor huella) o negativos (menor huella).hay reglas específicas de puntaje para: dieta, transporte (auto y vuelos), energía renovable, gestión de residuos, preguntas adicionales (clasificadas en positivas/negativas)
+
+4- Cálculo de Puntajes las secciones suman puntos positivos (mayor huella) o negativos (menor huella).hay reglas específicas de puntaje para: dieta, transporte (auto y vuelos), energía renovable, gestión de residuos, preguntas adicionales (clasificadas en positivas/negativas).
+
 5- interfaz interactiva: botones de respuestas sí/no crean inputs ocultos para almacenar los valores seleccionados. al enviar el formulario, se calcula el puntaje total y se muestra un mensaje con: un diagnóstico (huella BAJA / MEDIA / ALTA) Desglose por categoría.
+
 
 # CSS: Estilos Personalizados
 
