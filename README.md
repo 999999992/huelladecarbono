@@ -46,7 +46,7 @@ se bloquea la interacción (pointer-events: none) y estilos adaptados también p
 
 # Desarrollo: 
 
-Lo primero que estuvimos haciendo es mirar algunas huellas de carbono de otras paginas y de ahi tuvimos una idea de como hacer esta, primero buscamos las 30 preguntas mas usadas y tras anotarlas empezamos con los codigos, el codigo HTML fue el primero en hacerse metiendo las 30 preguntas divididas en 5 secciones como alimentos, residuos originalmente habian otras preguntas que fueron reemplazadas por otras ademas de definir como serian los botones de volver atras, siguiente y calcular ademas de vincular a "https://cdn.tailwindcss.com" tras terminar el html y longear a JS y CSS.
+Lo primero que estuvimos haciendo es mirar algunas huellas de carbono de otras paginas y de ahi tuvimos una idea de como hacer esta, primero buscamos las 30 preguntas mas usadas y tras anotarlas empezamos con los codigos, el codigo HTML fue el primero en hacerse metiendo las 30 preguntas divididas en 5 secciones como alimentos, residuos originalmente habian otras preguntas que fueron reemplazadas por otras ademas de definir como serian los botones de volver atras, siguiente y calcular ademas de vincular a "https://cdn.tailwindcss.com" tras terminar el HTML y longear a JS y CSS.
 
 Se siguio con Javascript donde se hicieron las formas de calcular las sumas de las preguntas de la huella ademas de agregar un modo oscuro que se 
 cambia a traves de un boton y ahi se encuentran los distintos resultados que saldran segun los resultados y por ultimo el CSS se hizo para definir el
